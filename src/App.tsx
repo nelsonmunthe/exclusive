@@ -3,8 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootLayout from './pages/RootLayout';
-import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import Login from './pages/login/Login';
 
 const router = createBrowserRouter(
   [
