@@ -4,7 +4,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Search from './Search';
 
 const UserProfile = () => {
-    let isLogin = true;
+    let isLogin = false;
     
     return (
         <div className='flex items-center gap-x-2 text-sm'>

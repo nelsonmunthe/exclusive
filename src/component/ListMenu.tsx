@@ -6,7 +6,7 @@ const ListMenu = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/contact">Contact</NavLink>
             <NavLink to="/about">About</NavLink>
-            <NavLink to="/signUp">Sign Up</NavLink>
+            <NavLink to="/sign-up">Sign Up</NavLink>
         </nav>
     )
 }
