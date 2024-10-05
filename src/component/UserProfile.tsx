@@ -4,17 +4,19 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import Search from './Search';
 
 const UserProfile = () => {
-    let isLogin = false;
+    const accessToken = localStorage.getItem('accessToken')
     
     return (
         <div className='flex items-center gap-x-2 text-sm'>
             <Search />
             
-            {isLogin && <FavoriteBorderIcon />}
-            {isLogin && <AddShoppingCartIcon />}
-            {isLogin && <div className='bg-[#DB4444] rounded-xl'>
-                <PersonOutlineIcon  className='text-white' />
-            </div>
+            {accessToken && <FavoriteBorderIcon />}
+            {accessToken && <AddShoppingCartIcon />}
+            {accessToken && (
+                <div className='bg-[#DB4444] rounded-xl'>
+                    <PersonOutlineIcon  className='text-white' />
+                </div>
+            )
             }
         </div>
     )

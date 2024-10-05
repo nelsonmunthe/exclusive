@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { login } from "../../apiCall/auth"
+import { useNavigate } from "react-router-dom";
+import { useSnackbar } from 'notistack'
 
 const useLogin = () => {
     const [userLogin, setUserLogin] = useState<{username: string, password : string}>({username: "", password: ""});
-
+    const navigate = useNavigate()
+    const { enqueueSnackbar } = useSnackbar()
 
     const onSubmitLogin = async () => {
         try {
@@ -11,9 +14,11 @@ const useLogin = () => {
             if(response){
                 const token = response?.data?.data?.token;
                 localStorage.setItem("accessToken", token)
+                enqueueSnackbar('Login Succeeded', {variant: 'success'})
+                navigate('/')
             }
         } catch (error) {
-            console.log('error', error)
+            enqueueSnackbar('Login Failed', {variant: 'error'})
         }
     }
 
