@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom"
+const accessToken = localStorage.getItem('accessToken');
 
 const ListMenu = () => {
     return(
@@ -6,7 +7,8 @@ const ListMenu = () => {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/contact">Contact</NavLink>
             <NavLink to="/about">About</NavLink>
-            <NavLink to="/sign-up">Sign Up</NavLink>
+            {!accessToken && <NavLink to="/login">Login</NavLink>} 
+            
         </nav>
     )
 }
