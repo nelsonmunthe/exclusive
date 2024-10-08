@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import BarSign from "../../component/BarSign";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -71,18 +71,14 @@ const FlashSale = () => {
                         return <ProductCard  product={item}/>
                     })
                 }
-                {/* <ProductCard 
-                    product={product}
-                />
-                 <ProductCard 
-                    product={product}
-                />
-                 <ProductCard 
-                    product={product}
-                />
-                 <ProductCard 
-                    product={product}
-                /> */}
+                
+            </div>
+            <div className="flex justify-center items-center">
+                <Button
+                      sx={{bgcolor: "#DB4444", color : "white", textTransform: 'none', marginTop: "10px"}} 
+                >
+                    View All Products
+                </Button>
             </div>
         </div>
     )

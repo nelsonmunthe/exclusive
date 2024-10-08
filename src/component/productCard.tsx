@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material"
 import { Product } from "../interfaces/product"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import star from "../assets/images/start.png"
 
 type ProductProps = {
@@ -24,7 +24,7 @@ const ProductCard = ({ product} : ProductProps) => {
                         <Typography fontSize={12} sx={{color: "white"}}>-{product.discount}%</Typography>
                     </div>
                     <div className="flex items-center justify-center bg-white rounded-2xl p-1">
-                        <FavoriteBorderIcon  sx={{color: 'black'}}/>
+                        <FavoriteBorderIcon  sx={{color: 'black'}} className="hover:cursor-pointer"/>
                     </div>
                 </div>
                 <div className="flex justify-between">
@@ -32,7 +32,7 @@ const ProductCard = ({ product} : ProductProps) => {
                         <img  src={`http://localhost:8888${product.image_Url}`} alt={product.description}/>
                    </div>
                     <div className="flex bg-white items-start justify-center rounded-2xl p-1 max-h-8 object-fill">
-                        <RemoveRedEyeIcon  />
+                        <RemoveRedEyeOutlinedIcon   className="hover:cursor-pointer"/>
                     </div>
                 </div>
 
