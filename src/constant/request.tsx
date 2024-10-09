@@ -9,3 +9,8 @@ export const Flash_Sales: AxiosRequestConfig = {
     method: 'GET',
     url: 'product/flash-sell'
 }
+
+export const Best_Product: AxiosRequestConfig = {
+    method: 'GET',
+    url: 'product/best-product'
+}

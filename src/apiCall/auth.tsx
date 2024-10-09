@@ -1,7 +1,7 @@
 import { Login, SignUp } from "../constant/authRequests";
 import axiosInstance from "../utils/axiosInstance";
 import { UserSignUp } from "../interfaces/user"
-import { Categories, Flash_Sales } from "../constant/request";
+import { Best_Product, Categories, Flash_Sales } from "../constant/request";
 
 export const login = async (username: string, password: string) => {
     try {
@@ -46,6 +46,17 @@ export const getFlashSales = async() => {
         return await axiosInstance({
             baseURL: "http://localhost:8888/",
             ...Flash_Sales
+        })
+    } catch (error) {
+        throw(error)
+    }
+}
+
+export const getBestProducts = async () => {
+    try {
+        return await axiosInstance({
+            baseURL: "http://localhost:8888/",
+            ...Best_Product
         })
     } catch (error) {
         throw(error)
