@@ -10,8 +10,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const Footer = () => {
     return(
-        <div className="bg-[#363738] flex flex-col  px-[100px]" >
-            <div className="flex flex-1 gap-x-2  py-10 justify-between">
+        <div className="bg-[#363738] flex flex-col px-2 lg:px-[100px]" >
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-y-4  py-10 justify-between">
                 <div className="flex flex-col gap-y-2">
                     <Typography fontSize={14} sx={{color: '#FAFAFA'}}>Exclusive</Typography>
                     <Typography fontSize={12} sx={{color: '#FAFAFA'}}>Subscribe</Typography>

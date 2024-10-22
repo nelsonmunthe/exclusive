@@ -8,7 +8,7 @@ const UserProfile = () => {
     
     return (
         <div className='flex items-center gap-x-2 text-sm'>
-            <Search />
+            {/* <Search /> */}
             
             {accessToken && <FavoriteBorderIcon />}
             {accessToken && <AddShoppingCartIcon />}

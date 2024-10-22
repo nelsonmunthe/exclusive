@@ -6,10 +6,12 @@ import Footer from "../component/Footer";
 
 const RootLayout = () => {
     return (
-        <main className="flex flex-col w-screen h-screen">
+        <main className="flex flex-col h-lvh">
             <Header />
             <MainNavigation />
-            <Outlet />
+            <div className="flex-1">
+                <Outlet />
+            </div>
             <Footer />
         </main>
     )
