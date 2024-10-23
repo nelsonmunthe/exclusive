@@ -9,7 +9,7 @@ const RootLayout = () => {
         <main className="flex flex-col h-lvh">
             <Header />
             <MainNavigation />
-            <div className="flex-1">
+            <div className="flex-1 lg:mx-[100px]">
                 <Outlet />
             </div>
             <Footer />

@@ -8,19 +8,22 @@ import SignUp from './pages/signUp/Index';
 import HomePage from './pages/home';
 import About from './pages/about/Index';
 import Contact from './pages/contact/Index';
+import ErrorPage from './pages/Error';
+import Cart from './pages/cart/Cart';
 
 const router = createBrowserRouter(
   [
     {
       path : "/",
       element : <RootLayout />,
-      errorElement : <div></div>,
+      errorElement : <ErrorPage />,
       children : [
         {path: "/", index: true, element: <HomePage />},
         {path: "/login", element: <Login />},
         {path: "/sign-up", element: <SignUp />},
         {path: "/about", element: <About />},
-        {path: "/contact", element: <Contact />}
+        {path: "/contact", element: <Contact />},
+        {path: "/cart", element: <Cart />}
       ]
     }
   ]

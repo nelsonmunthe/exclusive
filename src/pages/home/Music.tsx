@@ -4,7 +4,7 @@ import MusicImage from "../../assets/images/music.png"
 const Music = () => {
 
     return(
-        <div className="flex mx-[100px] bg-black p-8 mb-6 rounded-sm items-center justify-between">
+        <div className="flex  bg-black p-8 mb-6 rounded-sm items-center justify-between">
             <div className="flex flex-1 flex-col gap-y-4">
                 <Typography style={{color: "#00FF66"}} fontSize={14}>Categories</Typography>
                <div className="flex flex-col">

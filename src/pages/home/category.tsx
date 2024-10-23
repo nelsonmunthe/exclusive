@@ -20,7 +20,7 @@ const Category = () => {
     ];
 
     return(
-        <div className="flex flex-col px-[100px] mb-6 gap-y-2">
+        <div className="flex flex-col  mb-6 gap-y-2">
             <BarSign description="Categories" />
             <div className="flex justify-between items-center">
                 <Typography fontSize={18} style={{color: 'black', fontWeight: 500}}>Browse By Category</Typography>

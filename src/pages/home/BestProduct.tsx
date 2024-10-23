@@ -10,7 +10,7 @@ const BestProduct = () => {
 
 
     return(
-        <div className="flex flex-col px-[100px] mb-6 gap-y-2">
+        <div className="flex flex-col  mb-6 gap-y-2">
             <BarSign description="This Month" />
             <div className="flex items-center justify-between">
                 <Typography fontSize={18} style={{color: 'black', fontWeight: 500}}>Best Selling Products</Typography>

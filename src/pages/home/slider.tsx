@@ -6,7 +6,7 @@ import useSlider from "./useSlider";
 const Slider = () => {
     const { categories } =  useSlider()
     return(
-        <div className="flex px-[100px] my-4 text-[#7D8184] border-t-2 pb-6">
+        <div className="flex my-4 text-[#7D8184] border-t-2 pb-6">
             <div className="flex flex-col gap-y-2 border-r-2  border-r-[#dbddde] pr-8 mr-8 pt-6">
                 {categories.map((item, index) => {
                     return <Typography fontSize={12}  key={index} className="hover:cursor-pointer">{item?.name}</Typography>

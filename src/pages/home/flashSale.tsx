@@ -20,7 +20,7 @@ const FlashSale = () => {
         "flash_sell": true
     }
     return(
-        <div className="px-[100px] flex flex-col justify-start mb-4">
+        <div className=" flex flex-col justify-start mb-4">
             <div className="fle flex-col justify-start">
                 <BarSign  description="Today’s"/>
                 <div className="flex gap-x-2 mt-2 w-full justify-between">

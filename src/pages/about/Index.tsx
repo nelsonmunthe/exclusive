@@ -15,7 +15,7 @@ import iconCustomerServices from "../../assets/images/Icon-Customer service.png"
 
 const About = () => {
     return(
-        <div className="flex flex-col m-2 p-2 gap-y-8 lg:mx-[100px]">
+        <div className="flex flex-col m-2 p-2 gap-y-8 ">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4">
                 <div className="flex flex-col gap-y-4 justify-center">
                     <h1 className="text-2xl font-semibold leading-none tracking-tight text-gray-900 md:text-3xl dark:text-white">Our Story</h1>
