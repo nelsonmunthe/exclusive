@@ -1,14 +1,35 @@
-import { Typography } from "@mui/material"
 import ListMenu from "./ListMenu"
-import UserProfile from "./UserProfile"
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const MainNavigation = () => {
+    const [openMenu, setOpenMenu] = useState<boolean>(false);
+
+    const onHandleMenu = () => {
+        setOpenMenu(prev => !prev)
+    }
+
     return(
         <div 
-            className="bg-[#FFFFFF] lg:px-[100px] flex items-center justify-between p-2 gap-x-2 b-4 border border-b-gray-300 sticky top-0"
+            className="bg-[#FFFFFF] mb-4 lg:px-[100px] flex items-center justify-end p-2 gap-x-2 b-4 border border-b-gray-300 relative sm:sticky top-0 left-100 right-0 lg:right-100"
         >
-            <h1 className="text-2xl font-semibold leading-none tracking-tight text-gray-900 md:text-3xl dark:text-white">Exclusive</h1>
             <ListMenu />
+            <div className={`${openMenu ? 'block' : 'hidden'} flex flex-col items-center flex-1`}>
+                <NavLink to={"/"} className="hover:text-red-400 hover:underline font-semibold"> Home </NavLink>
+                <NavLink to={"/about"} className="hover:text-red-400 hover:underline font-semibold"> About </NavLink>
+                <NavLink to={"/contact"} className="hover:text-red-400 hover:underline font-semibold"> Contact </NavLink>
+            </div>
+            <div className="sm:hidden p-1 flex items-center">
+                { 
+                    openMenu ?  
+                        <CloseIcon onClick={onHandleMenu} className="hover:cursor-pointer block absolute right-0 top-0"/> : 
+                        <MenuIcon  onClick={onHandleMenu} className="hover:cursor-pointer block absolute right-0 top-0"/>
+                }
+               
+            </div>
+ 
         </div>
     )
 }

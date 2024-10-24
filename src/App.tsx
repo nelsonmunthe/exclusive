@@ -11,6 +11,13 @@ import Contact from './pages/contact/Index';
 import ErrorPage from './pages/Error';
 import Cart from './pages/cart/Cart';
 import ProductDetail from './pages/productDetail/Index';
+import Billing from './pages/billing/Billing';
+import Account from './pages/account/Index';
+import Profile from './pages/account/Profile';
+import AddressBook from './pages/account/AddressBook';
+import PaymentOption from './pages/account/PaymentOption';
+import Return from './pages/account/Return';
+import Cancellation from './pages/account/Cancelation';
 
 const router = createBrowserRouter(
   [
@@ -25,7 +32,19 @@ const router = createBrowserRouter(
         {path: "/about", element: <About />},
         {path: "/contact", element: <Contact />},
         {path: "/cart", element: <Cart />},
-        {path: "/detail", element: <ProductDetail />}
+        {path: "/detail", element: <ProductDetail />},
+        {path: "/billing", element: <Billing />},
+        {
+          path: "/account",
+          element: <Account />, 
+          children: [
+            {path: "/account/profile", element: <Profile />, index: true},
+            {path: "/account/address", element: <AddressBook />},
+            {path: "/account/payment", element: <PaymentOption />},
+            {path: "/account/return", element: <Return />},
+            {path: "/account/cancellation", element: <Cancellation />}
+          ]
+        }
       ]
     }
   ]
