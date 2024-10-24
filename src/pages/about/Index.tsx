@@ -15,19 +15,19 @@ import iconCustomerServices from "../../assets/images/Icon-Customer service.png"
 
 const About = () => {
     return(
-        <div className="flex flex-col m-2 p-2 gap-y-8 ">
+        <div className="flex flex-col m-2 p-2  gap-y-20">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4">
                 <div className="flex flex-col gap-y-4 justify-center">
                     <h1 className="text-2xl font-semibold leading-none tracking-tight text-gray-900 md:text-3xl dark:text-white">Our Story</h1>
-                    <p className="text-sm text-gray-500" >Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region. </p>
-                    <p className="text-sm text-gray-500" >Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging  from consumer.</p>
+                    <p className="text-md text-gray-500" >Launced in 2015, Exclusive is South Asia’s premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3 millioons customers across the region. </p>
+                    <p className="text-md text-gray-500" >Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging  from consumer.</p>
                 </div>
                 <div className="flex justify-center items-center">
                     <img src={about} alt="about-image" className="rounded-md object-contain md:h-[400px]"/>
                 </div>
                
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-20">
                 <div className="flex flex-col justify-center items-center p-2 border border-gray-300 rounded-md gap-y-2 bg-white">
                     <div className="bg-gray-300 p-2 rounded-full w-fit">
                         <div className="flex  justify-center items-center flex-col p-2 border border-gray-200  bg-black rounded-full">

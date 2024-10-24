@@ -10,6 +10,7 @@ import About from './pages/about/Index';
 import Contact from './pages/contact/Index';
 import ErrorPage from './pages/Error';
 import Cart from './pages/cart/Cart';
+import ProductDetail from './pages/productDetail/Index';
 
 const router = createBrowserRouter(
   [
@@ -23,7 +24,8 @@ const router = createBrowserRouter(
         {path: "/sign-up", element: <SignUp />},
         {path: "/about", element: <About />},
         {path: "/contact", element: <Contact />},
-        {path: "/cart", element: <Cart />}
+        {path: "/cart", element: <Cart />},
+        {path: "/detail", element: <ProductDetail />}
       ]
     }
   ]
