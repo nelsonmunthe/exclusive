@@ -4,36 +4,39 @@ import MusicImage from "../../assets/images/music.png"
 const Music = () => {
 
     return(
-        <div className="flex  bg-black p-8 mb-6 rounded-sm items-center justify-between">
-            <div className="flex flex-1 flex-col gap-y-4">
-                <Typography style={{color: "#00FF66"}} fontSize={14}>Categories</Typography>
-               <div className="flex flex-col">
-                    <Typography style={{color: "white"}} fontSize={40}>Enhance Your Music Experience</Typography>
-               </div>
-                <div className="flex gap-x-1">
-                    <div className="bg-white flex flex-col justify-center items-center rounded-2xl w-[35px] h-[35px] px-1">
-                        <Typography fontSize={8}>23</Typography>
-                        <Typography fontSize={8}>Hours</Typography>
+        <div className="grid grid-cols-1 sm:grid-cols-2 bg-black p-8 mb-6 rounded-sm items-center gap-2">
+            <div className="flex flex-1 flex-col gap-y-4 justify-center">
+                <p className="text-[#00FF66] text-2xl sm:text-2lg  lg:text-4xl">Categories</p>
+                <p className="text-white text-sm sm:text-lg">Enhance Your Music Experience</p>
+                <div className="flex gap-x-1 md:gap-x-2">
+                    <div className="bg-white flex flex-col justify-center items-center rounded-full w-[35px] h-[35px] p-1 md:p-7">
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>23</small></p>
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>Hours</small></p>
                     </div>
-                    <div className="bg-white flex flex-col justify-center items-center rounded-2xl w-[35px] h-[35px] px-1">
-                        <Typography fontSize={8}>05</Typography>
-                        <Typography fontSize={8}>Days</Typography>
+                    <div className="bg-white flex flex-col justify-center items-center rounded-full w-[35px] h-[35px] p-1 md:p-7">
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>05</small></p>
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>Days</small></p>
                     </div>
-                    <div className="bg-white flex flex-col justify-center items-center rounded-2xl w-[35px] h-[35px] px-1">
-                        <Typography fontSize={8}>59</Typography>
-                        <Typography fontSize={8}>Minutes</Typography>
+                    <div className="bg-white flex flex-col justify-center items-center rounded-full w-[35px] h-[35px] p-1 md:p-7">
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>59</small></p>
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>Minutes</small></p>
                     </div>
-                    <div className="bg-white flex flex-col justify-center items-center rounded-2xl w-[35px] h-[35px] px-1">
-                        <Typography fontSize={8}>35</Typography>
-                        <Typography fontSize={8}>Seconds</Typography>
+                    <div className="bg-white flex flex-col justify-center items-center rounded-full w-[35px] h-[35px] p-1 md:p-7">
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>35</small></p>
+                        <p className="text-[7px] md:text-[12px] md:font-semibold"><small>Seconds</small></p>
                     </div>
                 </div>
-                <Button style={{background: "#00FF66", color: "white", textTransform: "none", width: '80px'}}>Buy Now</Button>
+                <div>
+                    <button
+                        className="bg-[#00FF66] text-sm text-white py-1 px-2 rounded-md block"
+                    >
+                        Buy Now
+                    </button>
+                </div>
             </div>
             <div className="flex-1">
                 <img src={MusicImage} alt="music"  className="object-fill "/>
             </div>
-
         </div>
     )
 }

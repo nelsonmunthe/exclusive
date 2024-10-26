@@ -8,7 +8,7 @@ const BarSign: React.FC<BarSignProps> = ({description}) => {
     return(
         <div className="flex items-center gap-x-1">
              <div className="w-[10px] h-[20px] bg-[#DB4444]"></div>
-             <Typography fontSize={12} style={{color: "#DB4444"}}>{description}</Typography>
+             <p className="text-sm  md:text-lg text-[#DB4444]">{description}</p>
         </div>
     )
 }

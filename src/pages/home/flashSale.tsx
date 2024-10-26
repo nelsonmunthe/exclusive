@@ -20,65 +20,59 @@ const FlashSale = () => {
         "flash_sell": true
     }
     return(
-        <div className=" flex flex-col justify-start mb-4">
-            <div className="fle flex-col justify-start">
+        <div className=" flex flex-col justify-start my-2 p-2 gap-2">
+            <div className="fle flex-col justify-start my-2">
                 <BarSign  description="Today’s"/>
                 <div className="flex gap-x-2 mt-2 w-full justify-between">
-                   <div className="flex">
-                        <Typography fontSize={20} sx={{fontWeight: 500}}>Flash Sales</Typography>
-                        <div className="flex gap-x-2 ml-10" >
+                   <div className="flex gap-x-1 md:gap-x-2">
+                        <p className="font-semibold text-sm">Flash Sales</p>
+                        <div className="flex gap-x-1 items-center " >
                             <div className="fle flex-col">
-                                <Typography fontSize={14}>Days</Typography>
-                                <Typography fontSize={16} sx={{fontWeight: 700}}>03</Typography>
+                                <p className="text-sm">Days</p>
+                                <p className="text-sm"><strong>03</strong></p>
                             </div>
-                            <div className="flex items-center justify-center">
-                                <Typography sx={{color: "#E07575"}}>:</Typography>
-                            </div>
+                            <p className="text-[#E07575] text-sm"><small>:</small></p>
                             <div className="fle flex-col">
-                                <Typography fontSize={14}>Hours</Typography>
-                                <Typography fontSize={16} sx={{fontWeight: 700}}>23</Typography>
+                                <p className="text-sm">Hours</p>
+                                <p className="text-sm"><strong>23</strong></p>
                             </div>
-                            <div className="flex items-center justify-center">
-                                <Typography sx={{color: "#E07575"}}>:</Typography>
-                            </div>
+                            <p className="text-[#E07575] text-sm"><small>:</small></p>
                             <div className="fle flex-col">
-                                <Typography fontSize={14}>Minutes</Typography>
-                                <Typography fontSize={16} sx={{fontWeight: 700}}>19</Typography>
+                                <p className="text-sm">Minutes</p>
+                                <p className="text-sm"><strong>19</strong></p>
                             </div>
-                            <div className="flex items-center justify-center">
-                                <Typography sx={{color: "#E07575"}}>:</Typography>
-                            </div>
+                            <p className="text-[#E07575] text-sm"><small>:</small></p>
                             <div className="fle flex-col">
-                                <Typography fontSize={14}>Seconds</Typography>
-                                <Typography fontSize={16} sx={{fontWeight: 700}}>56</Typography>
+                                <p className="text-sm">Seconds</p>
+                                <p className="text-sm"><strong>56</strong></p>
                             </div>
                         </div>
                    </div>
-                    <div className="flex gap-x-2">
+                    <div className="flex gap-x-1">
                         <div className="bg-[#F5F5F5] flex items-center justify-center hover:cursor-pointer rounded-xl w-[30px] h-[30px]"> 
-                            <ArrowBackIcon sx={{fontSize: 20}} />
+                            <ArrowBackIcon sx={{fontSize: 20}}  className="text-sm"/>
                         </div>
                         <div className="bg-[#F5F5F5] flex items-center justify-center hover:cursor-pointer rounded-xl w-[30px] h-[30px]"> 
-                            <ArrowForwardIcon sx={{fontSize: 20}} />
+                            <ArrowForwardIcon sx={{fontSize: 20}} className="text-sm"/>
                         </div>
                         
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between gap-x-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {
-                    flashSales.map(item => {
-                        return <ProductCard  product={item}/>
+                    flashSales.map((item, index) => {
+                        return <ProductCard  product={item} key={item.id}/>
                     })
                 }
                 
             </div>
             <div className="flex justify-center items-center">
-                <Button
-                      sx={{bgcolor: "#DB4444", color : "white", textTransform: 'none', marginTop: "10px"}} 
+                <button
+                    className="flex bg-[#DB4444] py-1 px-2 rounded-sm text-white"
                 >
                     View All Products
-                </Button>
+                </button>
             </div>
         </div>
     )

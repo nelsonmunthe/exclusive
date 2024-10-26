@@ -20,10 +20,10 @@ const Category = () => {
     ];
 
     return(
-        <div className="flex flex-col  mb-6 gap-y-2">
+        <div className="flex flex-col gap-2 p-2">
             <BarSign description="Categories" />
             <div className="flex justify-between items-center">
-                <Typography fontSize={18} style={{color: 'black', fontWeight: 500}}>Browse By Category</Typography>
+                <h6 className="font-semibold text-sm">Browse By Category</h6>
                 <div className="flex gap-x-2">
                     <div className="bg-[#F5F5F5] flex items-center justify-center hover:cursor-pointer rounded-xl w-[30px] h-[30px]"> 
                         <ArrowBackIcon sx={{fontSize: 20}} />
@@ -33,7 +33,7 @@ const Category = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-x-2 justify-between">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 {
                     categories.map(item => {
                         return(
