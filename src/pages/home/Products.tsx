@@ -7,7 +7,7 @@ import ProductCard from "../../component/productCard";
 
 const Products = () => {
     const {
-        bestProduct
+        bestProduct,
     } = useBestProduct();
 
     return(

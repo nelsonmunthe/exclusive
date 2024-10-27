@@ -8,5 +8,6 @@ export type Product = {
     price: number
     discount: number
     total: number
-    flash_sell : boolean
+    flash_sell: boolean
+    wishList: boolean
 }

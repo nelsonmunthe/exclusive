@@ -1,7 +1,10 @@
 import { Typography } from "@mui/material";
 import will_smith from "../../assets/images/will_smith.png"
+import useCart from "./useCart";
 
 const Cart = () => {
+    const { wishList } = useCart();
+    
     return(
         <div className="flex flex-col my-10 gap-y-4 p-2">
             <div className="flex justify-between items-center px-1  border border-gray-200  md:px-4 py-2">
@@ -10,28 +13,25 @@ const Cart = () => {
                 <p className="flex-1">Quantity</p>
                 <p className="flex-1">Subtotal</p>
             </div>
-            <div className="flex justify-between items-center px-1 border border-gray-200 md:px-4 py-2">
-                <div className="flex justify-start items-center gap-x-2 flex-1">
-                    <img src={will_smith} alt="will_smith" className="h-10"/>
-                    <p className="text-sm text-gray-500">LCD Monitor</p>
-                </div>
-                <p className="text-sm text-gray-500 flex-1">$650</p>
-                <div className="flex justify-start flex-1">
-                    <input type="number" value={650} className="w-14 border border-gray-200 p-1 text-sm"/>
-                </div>
-                <p className="text-sm text-gray-500 flex-1">$650</p>
-            </div>
-            <div className="flex justify-between items-center px-1  border border-gray-200 md:px-4 py-2">
-                <div className="flex justify-start items-center gap-x-2 flex-1">
-                    <img src={will_smith} alt="will_smith" className="h-10"/>
-                    <p className="text-sm text-gray-500">LCD Monitor</p>
-                </div>
-                <p className="text-sm text-gray-500 flex-1">$650</p>
-                <div className="flex justify-start flex-1">
-                    <input type="number" value={650} className="w-14 border border-gray-200 p-1 text-sm"/>
-                </div>
-                <p className="text-sm text-gray-500 flex-1">$650</p>
-            </div>
+            {
+                wishList.map(item => {
+                    return (
+                        <div className="flex justify-between items-center px-1 border border-gray-200 md:px-4 py-2">
+                            <div className="flex justify-start items-center gap-x-2 flex-1">
+                                <img src={`http://localhost:8888${item.image_Url}`} alt="will_smith" className="h-10"/>
+                                <p className="text-sm text-gray-500">{item.name}</p>
+                            </div>
+                            <p className="text-sm text-gray-500 flex-1">$${item.price}</p>
+                            <div className="flex justify-start flex-1">
+                                <input type="number" value={650} className="w-14 border border-gray-200 p-1 text-sm"/>
+                            </div>
+                            <p className="text-sm text-gray-500 flex-1">$${item.total}</p>
+                        </div>
+                    )
+                })
+            }
+
+           
             <div className="flex justify-between ">
                 <button
                     className="text-sm border border-gray-600 rounded-md px-4 py-2"

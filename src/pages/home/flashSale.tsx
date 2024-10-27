@@ -7,18 +7,7 @@ import useFlashSale from "./useFlashSale";
 
 const FlashSale = () => {
     const { flashSales } = useFlashSale()
-    const product  = {
-        "id": 4,
-        "name": "S-Series Comfort Chair ",
-        "description": "S-Series Comfort Chair ",
-        "category": 4,
-        "image_Url": "/static/chair.png",
-        "rating": 8.8,
-        "price": 400,
-        "discount": 25,
-        "total": 100,
-        "flash_sell": true
-    }
+
     return(
         <div className=" flex flex-col justify-start my-2 p-2 gap-2">
             <div className="fle flex-col justify-start my-2">

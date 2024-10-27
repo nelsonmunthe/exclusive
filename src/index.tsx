@@ -5,21 +5,25 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { SnackbarProvider } from 'notistack';
 import { Slide } from '@mui/material';
+import { Provider } from 'react-redux';
+import { store } from "./store/store"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <SnackbarProvider
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "right",
-    }}
-    maxSnack={5}
-    TransitionComponent={Slide}
-  >
-    <App />
-  </SnackbarProvider>
+  <Provider store={store}>
+    <SnackbarProvider
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "right",
+      }}
+      maxSnack={5}
+      TransitionComponent={Slide}
+    >
+      <App />
+    </SnackbarProvider>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function

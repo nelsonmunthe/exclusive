@@ -3,12 +3,15 @@ import { Product } from "../interfaces/product"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import star from "../assets/images/start.png"
+import useWisthList from "../pages/hooks/useWisthList";
 
 type ProductProps = {
     product : Product
 }
 
 const ProductCard = ({ product} : ProductProps) => {
+   const { onHandleWishList } = useWisthList();
+
     const rating = Math.ceil(product.rating / 2)
     let stars : any[] = [];
     
@@ -23,8 +26,14 @@ const ProductCard = ({ product} : ProductProps) => {
                     <div className="bg-[#DB4444] w-[60px] rounded-sm flex items-center justify-center ">
                         <Typography fontSize={12} sx={{color: "white"}}>-{product.discount}%</Typography>
                     </div>
-                    <div className="flex items-center justify-center bg-white rounded-2xl p-1">
-                        <FavoriteBorderIcon  sx={{color: 'black'}} className="hover:cursor-pointer"/>
+                    <div className={`flex items-center justify-center bg-white rounded-2xl p-1"`}>
+                        <FavoriteBorderIcon  
+                            sx={{color: `${product.wishList ? "#DB4444" : "black"}`}} 
+                            className="hover:cursor-pointer"
+                            onClick={() => {
+                                onHandleWishList(product)
+                            }}
+                        />
                     </div>
                 </div>
                 <div className="flex justify-between">

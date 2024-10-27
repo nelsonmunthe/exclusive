@@ -8,6 +8,7 @@ const ListMenu = () => {
             <NavLink to="/" className="hover:text-red-400 hover:underline font-semibold">Home</NavLink>
             <NavLink to="/contact" className="hover:text-red-400 hover:underline font-semibold">Contact</NavLink>
             <NavLink to="/about" className="hover:text-red-400 hover:underline font-semibold">About</NavLink> 
+            <NavLink to="/cart" className="hover:text-red-400 hover:underline font-semibold">Cart</NavLink> 
         </nav>
     )
 }
