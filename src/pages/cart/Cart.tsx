@@ -13,8 +13,7 @@ const Cart = () => {
                 <p className="flex-1">Quantity</p>
                 <p className="flex-1">Subtotal</p>
             </div>
-            {
-                wishList.map(item => {
+            {wishList.length >= 1 && wishList.map(item => {
                     return (
                         <div className="flex justify-between items-center px-1 border border-gray-200 md:px-4 py-2">
                             <div className="flex justify-start items-center gap-x-2 flex-1">
@@ -28,10 +27,14 @@ const Cart = () => {
                             <p className="text-sm text-gray-500 flex-1">$${item.total}</p>
                         </div>
                     )
-                })
-            }
+            })}
+            { wishList.length === 0 && (
+                <div className="flex justify-center items-center py-4">
+                    <p className="text-gray-500 font-semibold text-lg">You don't have Wish List product</p>
+                </div>
+            )
 
-           
+            }           
             <div className="flex justify-between ">
                 <button
                     className="text-sm border border-gray-600 rounded-md px-4 py-2"
