@@ -18,6 +18,7 @@ import AddressBook from './pages/account/AddressBook';
 import PaymentOption from './pages/account/PaymentOption';
 import Return from './pages/account/Return';
 import Cancellation from './pages/account/Cancelation';
+import Product from './pages/product/Product';
 
 const router = createBrowserRouter(
   [
@@ -34,6 +35,7 @@ const router = createBrowserRouter(
         {path: "/cart", element: <Cart />},
         {path: "/detail", element: <ProductDetail />},
         {path: "/billing", element: <Billing />},
+        {path: "/product", element: <Product />},
         {
           path: "/account",
           element: <Account />, 

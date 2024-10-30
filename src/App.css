@@ -34,6 +34,11 @@ body{
   color: #61dafb;
 }
 
+input[type='file'] {
+  color: rgba(0, 0, 0, 0);
+  border: "none";
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

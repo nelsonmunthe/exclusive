@@ -14,3 +14,13 @@ export const Best_Product: AxiosRequestConfig = {
     method: 'GET',
     url: 'product/best-product'
 }
+
+export const UPLOAD: AxiosRequestConfig = {
+    method: 'POST',
+    url: 'product/upload'
+}
+
+export const CREATE_PRODUCT: AxiosRequestConfig = {
+    method: 'POST',
+    url: 'product/create'
+}

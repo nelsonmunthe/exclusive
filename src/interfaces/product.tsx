@@ -10,4 +10,26 @@ export type Product = {
     total: number
     flash_sell: boolean
     wishList: boolean
+    images: string[]
+}
+
+export type NewProduct = {
+    name : string
+    description : string
+    category_id: number
+    rating: number
+    price: number
+    discount: number
+    total: number
+    flash_sell: boolean
+    wishList: boolean
+    images: string
+}
+
+export type ProductField = {
+    fieldName: string,
+    required: boolean,
+    value: string | number,
+    fieldType: string | number,
+    error: boolean
 }
