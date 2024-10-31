@@ -4,8 +4,13 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import useBestProduct from "./useBestProduct";
 import ProductCard from "../../component/productCard";
+import useProduct from "./useProdcuts";
 
 const Products = () => {
+    const { 
+        product
+    } = useProduct()
+
     const {
         bestProduct,
     } = useBestProduct();
@@ -26,7 +31,7 @@ const Products = () => {
             </div>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {
-                    bestProduct.map((item, index) => {
+                    product.map((item, index) => {
                         return <ProductCard  product={item} key={index}/>
                     })
                 }

@@ -17,7 +17,7 @@ const Cart = () => {
                     return (
                         <div className="flex justify-between items-center px-1 border border-gray-200 md:px-4 py-2">
                             <div className="flex justify-start items-center gap-x-2 flex-1">
-                                <img src={`http://localhost:8888${item.image_Url}`} alt="will_smith" className="h-10"/>
+                                <img src={`http://localhost:8888${item.images[0]}`} alt="will_smith" className="h-10"/>
                                 <p className="text-sm text-gray-500">{item.name}</p>
                             </div>
                             <p className="text-sm text-gray-500 flex-1">$${item.price}</p>

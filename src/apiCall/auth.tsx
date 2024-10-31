@@ -1,8 +1,17 @@
 import { Login, SignUp } from "../constant/authRequests";
 import axiosInstance from "../utils/axiosInstance";
 import { UserSignUp } from "../interfaces/user"
-import { Best_Product, CREATE_PRODUCT, Categories, Flash_Sales, UPLOAD } from "../constant/request";
+import { 
+    Best_Product, 
+    CREATE_PRODUCT, 
+    Categories, 
+    Flash_Sales, 
+    PRODUCT_DETAIL, 
+    UPLOAD,
+    PRODUCTS
+ } from "../constant/requestProducts";
 import { NewProduct } from "../interfaces/product";
+import { Pagination } from "../interfaces/common";
 
 export const login = async (username: string, password: string) => {
     try {
@@ -85,6 +94,28 @@ export const createProduct = async (product : NewProduct) => {
             baseURL: "http://localhost:8888/",
             ...CREATE_PRODUCT,
             data: product
+        })
+    } catch (error) {
+        throw(error)
+    }
+}
+
+export const productDetail =  async (productId : number) => {
+    try {
+        return await axiosInstance({
+            baseURL: "http://localhost:8888/",
+            ...PRODUCT_DETAIL(productId)
+        })
+    } catch (error) {
+        throw(error)
+    }
+}
+
+export const products =  async (paginate: Pagination) => {
+    try {
+        return await axiosInstance({
+            baseURL: "http://localhost:8888/",
+            ...PRODUCTS(paginate)
         })
     } catch (error) {
         throw(error)

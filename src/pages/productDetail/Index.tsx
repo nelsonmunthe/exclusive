@@ -8,25 +8,32 @@ import start2 from "../../assets/images/Vector start 2.png"
 import iconHeart from "../../assets/images/iconHeart.png"
 import iconReturn from "../../assets/images/iconReturn.png"
 import iconCar from "../../assets/images/iconCar.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import useProductDetail from "./useProductDetai"
 
 const ProductDetail = () => {
-    const [currentImage, setCurrentImage] = useState(image1)
+    const {
+        product
+    } = useProductDetail()
+
+    const [currentImage, setCurrentImage] = useState<string | null>(null)
 
     const onChangeImage = (index: number) => {
-        setCurrentImage(images[index])
+        setCurrentImage(product.images[index])
     }
 
-    const images = [image1, image2, image3, image4, image5];
+    useEffect(() => {
+        setCurrentImage(product.images[0])
+    }, [product])
 
     return(
-        <div className="grid grid-cols-1 md:grid-cols-6 p-2 gap-y-6 my-14">
+        <div className="grid grid-cols-1 md:grid-cols-6 p-2 gap-y-6 my-4">
             <div className="flex justify-between gap-1 md:flex-col items-center">
                 {
-                    images.map((item, index) => {
+                    product.images.map((item, index) => {
                         return <img 
                             key={index}
-                            src={item} 
+                            src={`http://localhost:8888${item}`} 
                             alt="" 
                             className="w-12 md:w-28 object-contain bg-gray-200 rounded-md hover:cursor-pointer"
                             onClick={(event) => onChangeImage(index)}
@@ -35,7 +42,7 @@ const ProductDetail = () => {
                 }
             </div>
             <div className="flex justify-center items-center md:col-span-3">
-                <img src={currentImage} alt="" className="object-fill md:w-[300px]"/>
+                <img src={`http://localhost:8888${currentImage}`} alt="" className="object-fill md:w-[300px]"/>
             </div>
             <div className="flex flex-col justify-center gap-y-2 md:col-span-2">
                 <h3 className="font-semibold">Havic HV G-92 Gamepad</h3>

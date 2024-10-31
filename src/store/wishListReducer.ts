@@ -1,11 +1,11 @@
 // Part 1
-import { Product } from "../interfaces/product" 
+import { Product, ProductDetail } from "../interfaces/product" 
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 // Part 2
 export interface IssueInitialState {
-    Products: Product[]
+    Products: ProductDetail[]
 }
 const initialState: IssueInitialState = {
     Products: []
@@ -16,10 +16,10 @@ export const wisthListSlice = createSlice({
     name: 'productWishList',
     initialState,
     reducers: {
-        AddWishList: (state, action: PayloadAction<Product>) => {
+        AddWishList: (state, action: PayloadAction<ProductDetail>) => {
             state.Products = [...state.Products, action.payload]
         },
-        removeWishList: (state, action: PayloadAction<Product>) => {
+        removeWishList: (state, action: PayloadAction<ProductDetail>) => {
             const wishList = [...state.Products]
             const updateWishList = wishList.filter(item => {
                 if(item.id !== action.payload.id) {

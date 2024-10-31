@@ -33,3 +33,17 @@ export type ProductField = {
     fieldType: string | number,
     error: boolean
 }
+
+export type ProductDetail = {
+    id : number
+    name : string
+    description : string
+    category_id: number
+    rating: number
+    price: number
+    discount: number
+    total: number
+    flash_sell: boolean
+    wishList: boolean
+    images: string[]
+}

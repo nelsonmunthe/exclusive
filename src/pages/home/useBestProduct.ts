@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import { Product } from "../../interfaces/product";
+import { Product, ProductDetail } from "../../interfaces/product";
 import { getBestProducts } from "../../apiCall/auth";
 import { useTypedSelector } from "../../store/store";
 
 const useBestProduct = () => {
-    const [bestProduct, setBestProduct] = useState<Product[]>([]);
+    const [bestProduct, setBestProduct] = useState<ProductDetail[]>([]);
     const wishList = useTypedSelector(state => state.wishList.Products)
 
     useEffect(() => {
-        const products : Product[] =  bestProduct.map((item: Product) => {
+        const products : ProductDetail[] =  bestProduct.map((item: ProductDetail) => {
             const isWishList = wishList.find(wishListItem => wishListItem.id === item.id);
             if(isWishList) {
                 return {

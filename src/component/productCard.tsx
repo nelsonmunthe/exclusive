@@ -1,12 +1,12 @@
 import { Typography } from "@mui/material"
-import { Product } from "../interfaces/product"
+import { Product, ProductDetail } from "../interfaces/product"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import star from "../assets/images/start.png"
 import useWisthList from "../pages/hooks/useWisthList";
 
 type ProductProps = {
-    product : Product
+    product : ProductDetail
 }
 
 const ProductCard = ({ product} : ProductProps) => {
@@ -38,7 +38,7 @@ const ProductCard = ({ product} : ProductProps) => {
                 </div>
                 <div className="flex justify-between">
                    <div className="flex-1 flex justify-center items-center">
-                        <img  src={`http://localhost:8888${product.image_Url}`} alt={product.description}/>
+                        <img  src={`http://localhost:8888${product.images[0]}`} alt={product.description}/>
                    </div>
                     <div className="flex bg-white items-start justify-center rounded-2xl p-1 max-h-8 object-fill">
                         <RemoveRedEyeOutlinedIcon   className="hover:cursor-pointer"/>

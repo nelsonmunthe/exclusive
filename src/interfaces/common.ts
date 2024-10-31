@@ -12,3 +12,8 @@ export type UploadProps = {
     uploadImageProduct : (event: React.ChangeEvent<HTMLInputElement>) => void
     
 }
+
+export type Pagination = {
+    page : number
+    perPage : number
+}

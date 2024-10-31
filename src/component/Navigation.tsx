@@ -13,7 +13,7 @@ const MainNavigation = () => {
 
     return(
         <div 
-            className="bg-[#FFFFFF] mb-4 lg:px-[100px] flex items-center justify-end p-2 gap-x-2 b-4 border border-b-gray-300 relative sm:sticky top-0 left-100 right-0 lg:right-100"
+            className="bg-[#FFFFFF] mb-4 lg:px-[100px] flex items-center justify-end p-2 gap-x-2 b-4 border border-b-gray-300 relative sm:sticky top-0 left-100 right-0 lg:right-100 z-50"
         >
             <ListMenu />
             <div className={`${openMenu ? 'block' : 'hidden'} flex flex-col items-center flex-1`}>

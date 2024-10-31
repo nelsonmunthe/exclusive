@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { getFlashSales } from "../../apiCall/auth";
-import { Product } from "../../interfaces/product";
+import { Product, ProductDetail } from "../../interfaces/product";
 import { useTypedSelector } from "../../store/store";
 
 const useFlashSale = () => {
-    const [flashSales, setFlashSales] = useState<Product[]>([])
+    const [flashSales, setFlashSales] = useState<ProductDetail[]>([])
     const wishList = useTypedSelector(state => state.wishList.Products);
 
     useEffect(() => {
-        const products : Product[] =  flashSales.map((item: Product) => {
+        const products : ProductDetail[] =  flashSales.map((item: ProductDetail) => {
             const isWishList = wishList.find(wishListItem => wishListItem.id === item.id);
             if(isWishList) {
                 return {
