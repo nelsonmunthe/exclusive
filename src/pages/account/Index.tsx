@@ -5,7 +5,7 @@ import Path from "../../component/Path";
 const Account = () => {
     const [menu, setMenu] = useState({mainMenu: "account", subMenu: "profile"})
     const location =  useLocation();
-    console.log(location.pathname)
+    
     const onChangeMenu = (mainMenu: string, subMenu: string) => {
         setMenu(prev => {
             return{

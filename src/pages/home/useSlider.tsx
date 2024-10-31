@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getCategories } from "../../apiCall/auth"
+import { getCategories } from "../../apiCall/common"
 import { Category } from "../../interfaces/category"
 
 const useSlider = () => {

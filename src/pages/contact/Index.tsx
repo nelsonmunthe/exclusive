@@ -1,5 +1,7 @@
 import iconCall from "../../assets/images/Vector-call.png"
 import iconEmail from "../../assets/images/Vector-email.png"
+import CustomButton from "../../component/CustomButton";
+import CustomInput from "../../component/CustomInput";
 
 const Contact = () => {
  
@@ -36,39 +38,42 @@ const Contact = () => {
             </div>
             <div className="py-6 px-2 rounded-md border border-gray-300 m-2 flex flex-col gap-y-4 md:flex-1 ">
                 <div className="grid grid-cols-1 gap-y-4 lg:grid-cols-3 gap-x-2">
-                    <input 
-                        type="text" 
-                        placeholder="Your Name *"
-                        className="bg-gray-200 py-2 px-4 rounded-md text-sm"
-                        required
+                    <CustomInput 
+                        type="text"
+                        labelText="Your Name"
+                        name="name"
+                        required={true}
+                        disable={false}
                     />
-                    <input 
-                        type="text" 
-                        placeholder="Your Email *"
-                        className="bg-gray-200 py-2 px-4 rounded-md text-sm"
-                        required
+
+                    <CustomInput 
+                        type="email"
+                        labelText="Your Email"
+                        name="email"
+                        required={true}
+                        disable={false}
                     />
-                    <input 
-                        type="text" 
-                        placeholder="Your Phone *"
-                        className="bg-gray-200 py-2 px-4 rounded-md text-sm"
-                        required
+
+                    <CustomInput 
+                        type="text"
+                        labelText="Your Phone"
+                        name="phone_number"
+                        required={true}
+                        disable={false}
                     />
                 </div>
 
                 <textarea 
                     placeholder="Your Massage"
-                    className="bg-gray-200 p-1 rounded-md text-sm"
+                    className="p-1 rounded-md text-sm border-b border-b-gray-400"
                     rows={5}
                     required
                 />
                 <div className="flex justify-end items-center" >
-                    <button 
-                        className="bg-[#DB4444] rounded-md text-white px-4 py-2"
-                        type="submit"
-                    >
-                        Send Massage
-                    </button>
+                    <CustomButton 
+                        style="bg-[#DB4444] rounded-md text-white px-4 py-2"
+                        description="Send Massage"
+                    />
                 </div>
 
             </div>

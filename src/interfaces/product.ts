@@ -45,5 +45,21 @@ export type ProductDetail = {
     total: number
     flash_sell: boolean
     wishList: boolean
-    images: string[]
+    images: any
+}
+
+export type ProductWishList = {
+    id : number
+    name : string
+    description : string
+    category_id: number
+    rating: number
+    price: number
+    discount: number
+    total: number
+    flash_sell: boolean
+    wishList: boolean
+    images: any
+    quantity: number
+    totalPrice: number
 }

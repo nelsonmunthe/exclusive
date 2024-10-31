@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom"
-import { productDetail } from "../../apiCall/auth"
+import { productDetail } from "../../apiCall/product"
 import { useEffect, useState } from "react"
 import { Product, ProductDetail } from "../../interfaces/product";
 

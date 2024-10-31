@@ -3,6 +3,8 @@ import Visa from "../../assets/images/Visa.png"
 import CardVisa from "../../assets/images/image 32.png"
 import Mastercard from "../../assets/images/Mastercard.png"
 import Nagad from "../../assets/images/Nagad.png"
+import CustomButton from "../../component/CustomButton"
+import CustomInput from "../../component/CustomInput"
 
 const Billing = () => {
     return(
@@ -10,81 +12,61 @@ const Billing = () => {
             <h4 className="font-semibold text-lg">Billing Details</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-8 lg:gap-20">
                 <div className="flex flex-col gap-y-2">
-                    <div className="flex flex-col">
-                        <div className="flex">
-                            <label htmlFor="First Name" className="text-sm text-gray-600">First Name</label>
-                            <label htmlFor="required" className="text-red-600">*</label>
-                        </div>
-                        <input 
-                            required
-                            className="bg-gray-100 rounded-sm p-1"
-                        />
+                    <CustomInput 
+                        type="text"
+                        required={true}
+                        disable={false}
+                        name="first_name"
+                        labelText="First Name"
+                    />
 
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="flex">
-                            <label htmlFor="Company Name" className="text-sm text-gray-600">Company Name</label>
-                            <label htmlFor="required" className="text-red-600">*</label>
-                        </div>
-                        <input 
-                            required
-                            className="bg-gray-100 rounded-sm p-1"
-                        />
+                    <CustomInput 
+                        type="text"
+                        required={true}
+                        disable={false}
+                        name="company_name"
+                        labelText="Company Name"
+                    />
 
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="flex">
-                            <label htmlFor="Streed Address" className="text-sm text-gray-600">Streed Address</label>
-                            <label htmlFor="required" className="text-red-600">*</label>
-                        </div>
-                        <input 
-                            required
-                            className="bg-gray-100 rounded-sm p-1"
-                        />
+                    <CustomInput 
+                        type="text"
+                        required={true}
+                        disable={false}
+                        name="address"
+                        labelText="Street Address"
+                    />
 
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="flex">
-                            <label htmlFor="Apartment, floor, etc. (optional)" className="text-sm text-gray-600">Apartment, floor, etc. (optional)</label>
-                        </div>
-                        <input 
-                            className="bg-gray-100 rounded-sm p-1"
-                        />
+                    <CustomInput 
+                        type="text"
+                        required={false}
+                        disable={false}
+                        name="address"
+                        labelText="Apartment, floor, etc. (optional)"
+                    />
 
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="flex">
-                            <label htmlFor="Town/City" className="text-sm text-gray-600">Town/Cit*</label>
-                            <label htmlFor="required" className="text-red-600">*</label>
-                        </div>
-                        <input 
-                            required
-                            className="bg-gray-100 rounded-sm p-1"
-                        />
+                    <CustomInput 
+                        type="text"
+                        required={true}
+                        disable={false}
+                        name="city"
+                        labelText="Town/City"
+                    />
 
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="flex">
-                            <label htmlFor="Phone Number" className="text-sm text-gray-600">Phone Number</label>
-                            <label htmlFor="required" className="text-red-600">*</label>
-                        </div>
-                        <input 
-                            required
-                            className="bg-gray-100 rounded-sm p-1"
-                        />
+                    <CustomInput 
+                        type="text"
+                        required={true}
+                        disable={false}
+                        name="phone_number"
+                        labelText="Phone Number"
+                    />
 
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="flex">
-                            <label htmlFor="Email Address" className="text-sm text-gray-600">Email Address</label>
-                            <label htmlFor="required" className="text-red-600">*</label>
-                        </div>
-                        <input 
-                            required
-                            className="bg-gray-100 rounded-sm p-1"
-                        />
-
-                    </div>
+                    <CustomInput 
+                        type="email"
+                        required={true}
+                        disable={false}
+                        name="email"
+                        labelText="Email Address"
+                    />
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <div className="flex justify-between items-center">
@@ -135,19 +117,17 @@ const Billing = () => {
                         <input 
                             type="text" 
                             placeholder="Coupon Code"
-                            className="border border-gray-400 p-1 rounded-sm w-[50%]"
+                            className="border border-gray-400 p-1 rounded-sm w-[50%] text-sm"
                         />
-                        <button
-                            className="text-white py-1 px-2 bg-[#DB4444] rounded-md text-sm flex-1"
-                        >
-                            Apply Coupon
-                        </button>
+                        <CustomButton 
+                            style="text-white py-1 px-2 bg-[#DB4444] rounded-md text-sm flex-1"
+                            description="Apply Coupon"
+                        />
                     </div>
-                    <button
-                        className="text-white py-1 px-2 bg-[#DB4444] rounded-md text-sm mt-2"
-                    >
-                        Place Order
-                    </button>
+                    <CustomButton 
+                        style="text-white py-1 px-2 bg-[#DB4444] rounded-md text-sm mt-2"
+                        description=" Place Order"
+                    />
                 </div>
             </div>
        </div>

@@ -7,7 +7,7 @@ axiosInstance.interceptors.request.use(
     config => {
       // ** Get token from localStorage
      
-      if(config.url === "/login"){
+      if(config.url !== "/login"){
         const accessToken = localStorage.getItem('accessToken');
         // ** If token is present add it to request's Authorization Header
         if (accessToken) {

@@ -3,6 +3,8 @@ import icon2 from "../../assets/images/Group 10.png"
 import useProduct from "./useProduct"
 import UploadBar from "../../component/UploadBar"
 import { Category } from "../../interfaces/category"
+import CustomInput from "../../component/CustomInput"
+import CustomButton from "../../component/CustomButton"
 
 const Product = () => {
     const { 
@@ -10,8 +12,6 @@ const Product = () => {
         onRemoveImage,
         uploadImageProduct,
         onCreateProduct,
-        product,
-        onChangeDataProduct,
         categories,
      } = useProduct()
 
@@ -56,47 +56,41 @@ const Product = () => {
                 }
             </div>
             <form 
-                className="flex flex-col m-2 gap-2 border border-gray-300 rounded-lg p-2 drop-shadow-md"
-                onSubmit={(event) => {
-                    event.preventDefault()
-                    onCreateProduct()
-                }}
+                className="flex flex-col m-2 gap-2 border border-gray-300 rounded-lg p-2 "
+                onSubmit={(event) => onCreateProduct(event)}
             >
-               <div className="flex flex-col gap-y-1">
-                    <label htmlFor="Product Name" className="text-[11px]">Product Name</label>
-                    <input 
-                        placeholder="Product Name"
-                        className="text-sm px-2 py-1 border-b border-b-gray-300 bg-gray-50 rounded-sm"
-                        required
-                        type="text"
-                        value={product.name}
-                        onChange={event => onChangeDataProduct('name', event, 'string')}
-                    />
-               </div>
-               <div className="flex flex-col gap-y-1">
-                    <label htmlFor="Description" className="text-[11px]">Description</label>
-                    <input 
-                        placeholder="Description"
-                        className="text-sm px-2 py-1 border-b border-b-gray-300 bg-gray-50 rounded-sm"
-                        required
-                        type="text"
-                        value={product.description}
-                        onChange={event => onChangeDataProduct('description', event, 'string')}
-                    />
-               </div>
+                <CustomInput 
+                    type= "text"
+                    required={true}
+                    labelText= "Product Name"
+                    name= "name"
+                    disable={false}
+                />
 
+                <CustomInput 
+                    type= "text"
+                    required={true}
+                    labelText= "Description"
+                    name= "description"
+                    disable={false}
+                />
+            
                <div className="flex flex-col gap-y-1">
-                    <label htmlFor="Category" className="text-[11px]">Category</label>
+                    <div className="mx-1 flex">
+                        <label htmlFor="Category" className="text-[11px]">Category</label>
+                        <label htmlFor="Category" className="text-red-600">*</label>
+                    </div>
                     <select 
-                        name="categories" 
+                        name="category_id"
+                        required 
                         id="categories" 
-                        className="text-sm px-2 py-1 border-b border-b-gray-300 bg-gray-50 rounded-sm"
-                        onChange={(event) => onChangeDataProduct('category_id', event, 'number')}
+                        className="text-sm p-1 border-b border-b-gray-300 bg-white rounded-sm"
                     >
                         {categories.map((item: Category) => {
                             return <option 
                                 key={item.id}
                                 value={item.id}
+                                className="bg-white"
                             >
                                 {item.name}
                             </option>
@@ -105,66 +99,49 @@ const Product = () => {
                     </select>
                </div>
 
-               <div className="flex flex-col gap-y-1">
-                    <label htmlFor="Rating" className="text-[11px]">Rating</label>
-                    <input 
-                        placeholder="Rating"
-                        className="text-sm px-2 py-1 border-b border-b-gray-300 bg-gray-50 rounded-sm"
-                        required
-                        type="number"
-                        min={0}
-                        max={50}
-                        value={product.rating}
-                        disabled
-                    />
-               </div>
+               <CustomInput 
+                    type= "number"
+                    required={true}
+                    labelText= "Rating"
+                    name= "rating"
+                    disable={true}
+                    min={0}
+                    max={50}
+                />
 
-               <div className="flex flex-col gap-y-1">
-                    <label htmlFor="Price" className="text-[11px]">Price</label>
-                    <input 
-                        placeholder="Price"
-                        className="text-sm px-2 py-1 border-b border-b-gray-300 bg-gray-50 rounded-sm"
-                        required
-                        type="number"
-                        min={0}
-                        value={product.price}
-                        onChange={event => onChangeDataProduct('price', event, 'number')}
-                    />
-               </div>
+                <CustomInput 
+                    type= "number"
+                    required={true}
+                    labelText= "Price"
+                    name= "price"
+                    disable={false}
+                    min={0}
+                />
 
-               <div className="flex flex-col gap-y-1">
-                    <label htmlFor="Discount" className="text-[11px]">Discount</label>
-                    <input 
-                        placeholder="Discount"
-                        className="text-sm px-2 py-1 border-b border-b-gray-300 bg-gray-50 rounded-sm"
-                        required
-                        type="number"
-                        min={0}
-                        value={product.discount}
-                        onChange={event => onChangeDataProduct('discount', event, 'number')}
-                    />
-               </div>
+                <CustomInput 
+                    type= "number"
+                    required={true}
+                    labelText= "Discount"
+                    name= "discount"
+                    disable={false}
+                    min={0}
+                />
 
-               <div className="flex flex-col gap-y-1">
-                    <label htmlFor="Quantity" className="text-[11px]">Quantity</label>
-                    <input 
-                        placeholder="Quantity"
-                        className="text-sm px-2 py-1 border-b border-b-gray-300 bg-gray-50 rounded-sm"
-                        required
-                        type="number"
-                        min={0}
-                        value={product.total}
-                        onChange={event => onChangeDataProduct('total', event, 'number')}
-                    />
-               </div>
+                <CustomInput 
+                    type= "number"
+                    required={true}
+                    labelText= "Quantity"
+                    name= "total"
+                    disable={false}
+                    min={0}
+                />
                 
-                <div className="flex justify-end">
-                    <button
+                <div className="flex justify-end my-2">
+                    <CustomButton 
+                        style="bg-[#DB4444] px-3 py-1 rounded-md text-white text-sm md:text-md"
                         type="submit"
-                        className="bg-[#DB4444] px-3 py-1 rounded-md text-white text-sm md:text-lg"
-                    >
-                        Submit
-                    </button>
+                        description="Submit"
+                    />
                 </div>
             </form>
         </div>

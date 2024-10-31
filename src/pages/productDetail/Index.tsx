@@ -1,8 +1,3 @@
-import image1 from "../../assets/images/image 57.png"
-import image2 from "../../assets/images/image 58.png"
-import image3 from "../../assets/images/image 59.png"
-import image4 from "../../assets/images/image 61.png"
-import image5 from "../../assets/images/image 63.png"
 import start1 from "../../assets/images/start.png"
 import start2 from "../../assets/images/Vector start 2.png"
 import iconHeart from "../../assets/images/iconHeart.png"
@@ -10,6 +5,7 @@ import iconReturn from "../../assets/images/iconReturn.png"
 import iconCar from "../../assets/images/iconCar.png"
 import { useEffect, useState } from "react"
 import useProductDetail from "./useProductDetai"
+import CustomButton from "../../component/CustomButton"
 
 const ProductDetail = () => {
     const {
@@ -28,21 +24,21 @@ const ProductDetail = () => {
 
     return(
         <div className="grid grid-cols-1 md:grid-cols-6 p-2 gap-y-6 my-4">
-            <div className="flex justify-between gap-1 md:flex-col items-center">
+            <div className="flex justify-between gap-1 md:flex-col items-center overflow-auto max-h-[500px]">
                 {
-                    product.images.map((item, index) => {
+                    product.images.map((item:any, index:number) => {
                         return <img 
                             key={index}
                             src={`http://localhost:8888${item}`} 
                             alt="" 
                             className="w-12 md:w-28 object-contain bg-gray-200 rounded-md hover:cursor-pointer"
-                            onClick={(event) => onChangeImage(index)}
+                            onClick={() => onChangeImage(index)}
                         />
                     })
                 }
             </div>
-            <div className="flex justify-center items-center md:col-span-3">
-                <img src={`http://localhost:8888${currentImage}`} alt="" className="object-fill md:w-[300px]"/>
+            <div className="flex justify-center items-center md:col-span-3 w-full">
+                <img src={`http://localhost:8888${currentImage}`} alt="" className="object-cover  rounded-lg"/>
             </div>
             <div className="flex flex-col justify-center gap-y-2 md:col-span-2">
                 <h3 className="font-semibold">Havic HV G-92 Gamepad</h3>
@@ -87,11 +83,10 @@ const ProductDetail = () => {
                             <p className="py-1 px-6 border border-gray-400">2</p>
                             <p className="py-1 px-3 bg-[#DB4444] text-white text-xl rounded-tr-md rounded-br-md hover:cursor-pointer">+</p>
                         </div>
-                        <button
-                            className="bg-[#DB4444] text-white text-sm py-2 px-4 rounded-md"
-                        >
-                            Buy Now
-                        </button>
+                        <CustomButton 
+                            style="bg-[#DB4444] text-white text-sm py-2 px-4 rounded-md"
+                            description="Buy Now"
+                        />
                     </div>
                     <div className="flex justify-center items-center border border-gray-400 p-2 rounded-md hover:cursor-pointer">
                         <img src={iconHeart} alt="wish-list"/>

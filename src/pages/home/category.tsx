@@ -37,7 +37,10 @@ const Category = () => {
                 {
                     categories.map(item => {
                         return(
-                            <div className="flex flex-col justify-center items-center border border-[#7D8184] p-2 gap-y-2">
+                            <div 
+                                key={item.name}
+                                className="flex flex-col justify-center items-center border border-[#7D8184] p-2 gap-y-2"
+                            >
                                 {item.icon}
                                 <Typography fontSize={10} sx={{color: "#7D8184"}}>{item.name}</Typography>
                             </div>

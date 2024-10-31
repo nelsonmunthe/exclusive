@@ -1,17 +1,25 @@
-import { useState } from "react";
 import { UserSignUp } from "../../interfaces/user";
 import { signUp } from "../../apiCall/auth";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 
 const useSignUp = () => {
-    const [user, setUser] = useState<UserSignUp>({username: "", password: "", email: "", address: "", name: "", phone_number: ""})
     const navigate =  useNavigate()
     const { enqueueSnackbar } = useSnackbar()
 
-    const onHandleCreateUser = async () => {
+    const onHandleCreateUser = async (event: React.FormEvent<HTMLFormElement>) => {
         try {
-            const response =  await signUp(user);
+            event.preventDefault();
+            const form = new FormData(event.currentTarget);
+            const dataUser: UserSignUp = {
+                username : form.get("username") as string,
+                password: form.get("password") as string,
+                email: form.get("email") as string,
+                address: form.get("address") as string,
+                name: form.get("name") as string,
+                phone_number: form.get("phone_number") as string
+            }
+            const response =  await signUp(dataUser);
 
             if(response){
                 enqueueSnackbar('Sign Up Succeeded', {variant: 'success'})
@@ -22,19 +30,8 @@ const useSignUp = () => {
         }
     }
 
-    const onChangeUser = (type: string, value: string) => {
-        setUser(prev => {
-            return{
-                ...prev,
-                [type]: value
-            }
-        })
-    }
-
     return {
-        user,
         onHandleCreateUser,
-        onChangeUser
     }
 };
 

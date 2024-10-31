@@ -1,16 +1,19 @@
-import { useState } from "react";
 import { login } from "../../apiCall/auth"
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from 'notistack'
 
 const useLogin = () => {
-    const [userLogin, setUserLogin] = useState<{username: string, password : string}>({username: "", password: ""});
     const navigate = useNavigate()
     const { enqueueSnackbar } = useSnackbar()
 
-    const onSubmitLogin = async () => {
+    const onSubmitLogin = async (event: React.FormEvent<HTMLFormElement>) => {
         try {
-            const response = await login(userLogin.username, userLogin.password);
+            event.preventDefault();
+            const form = new FormData(event.currentTarget)
+            const username = form.get("username") as string;
+            const password = form.get("password") as string;
+
+            const response = await login(username, password);
             if(response){
                 const token = response?.data?.data?.token;
                 localStorage.setItem("accessToken", token)
@@ -22,28 +25,9 @@ const useLogin = () => {
         }
     }
 
-    const onChangeUsername = (username: string) => {
-        setUserLogin(prev => {
-            return {
-                ...prev,
-                username
-            }
-        })
-    }
-
-    const onChangePassword = (password : string) => {
-        setUserLogin(prev => {
-            return {
-                ...prev,
-                password
-            }
-        })
-    }
 
     return {
-        onSubmitLogin,
-        onChangeUsername,
-        onChangePassword
+        onSubmitLogin
     }
 
 }

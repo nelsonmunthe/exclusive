@@ -1,10 +1,7 @@
-import { Login, SignUp } from "../constant/authRequests";
 import axiosInstance from "../utils/axiosInstance";
-import { UserSignUp } from "../interfaces/user"
 import { 
     Best_Product, 
     CREATE_PRODUCT, 
-    Categories, 
     Flash_Sales, 
     PRODUCT_DETAIL, 
     UPLOAD,
@@ -12,49 +9,12 @@ import {
  } from "../constant/requestProducts";
 import { NewProduct } from "../interfaces/product";
 import { Pagination } from "../interfaces/common";
-
-export const login = async (username: string, password: string) => {
-    try {
-        return await axiosInstance({
-            baseURL: "http://localhost:8888/",
-            ...Login,
-            data: {
-                username : username,
-                password : password
-            }
-        })
-    } catch (error) {
-        throw(error)
-    }
-}
-
-export const signUp = async(user : UserSignUp) => {
-    try {
-        return await axiosInstance({
-            baseURL: "http://localhost:8888/",
-            ...SignUp,
-            data: user
-        })
-    } catch (error) {
-        throw(error)
-    }
-}
-
-export const getCategories = async() => {
-    try {
-        return await axiosInstance({
-            baseURL: "http://localhost:8888/",
-            ...Categories
-        })
-    } catch (error) {
-        throw(error)
-    }
-}
+const { REACT_APP_API_HOST } = process.env;
 
 export const getFlashSales = async() => {
     try {
         return await axiosInstance({
-            baseURL: "http://localhost:8888/",
+            baseURL: REACT_APP_API_HOST,
             ...Flash_Sales
         })
     } catch (error) {
@@ -65,7 +25,7 @@ export const getFlashSales = async() => {
 export const getBestProducts = async () => {
     try {
         return await axiosInstance({
-            baseURL: "http://localhost:8888/",
+            baseURL: REACT_APP_API_HOST,
             ...Best_Product
         })
     } catch (error) {
@@ -76,7 +36,7 @@ export const getBestProducts = async () => {
 export const upload = async (form : FormData) => {
     try {
         return await axiosInstance({
-            baseURL: "http://localhost:8888/",
+            baseURL: REACT_APP_API_HOST,
             ...UPLOAD,
             headers: {
                 "Content-Type": `multipart/form-data`,
@@ -91,7 +51,7 @@ export const upload = async (form : FormData) => {
 export const createProduct = async (product : NewProduct) => {
     try {
         return await axiosInstance({
-            baseURL: "http://localhost:8888/",
+            baseURL: REACT_APP_API_HOST,
             ...CREATE_PRODUCT,
             data: product
         })
@@ -103,7 +63,7 @@ export const createProduct = async (product : NewProduct) => {
 export const productDetail =  async (productId : number) => {
     try {
         return await axiosInstance({
-            baseURL: "http://localhost:8888/",
+            baseURL: REACT_APP_API_HOST,
             ...PRODUCT_DETAIL(productId)
         })
     } catch (error) {
@@ -114,7 +74,7 @@ export const productDetail =  async (productId : number) => {
 export const products =  async (paginate: Pagination) => {
     try {
         return await axiosInstance({
-            baseURL: "http://localhost:8888/",
+            baseURL: REACT_APP_API_HOST,
             ...PRODUCTS(paginate)
         })
     } catch (error) {

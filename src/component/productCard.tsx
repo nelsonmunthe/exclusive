@@ -1,17 +1,18 @@
 import { Typography } from "@mui/material"
-import { Product, ProductDetail } from "../interfaces/product"
+import { ProductDetail } from "../interfaces/product"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import star from "../assets/images/start.png"
 import useWisthList from "../pages/hooks/useWisthList";
+import { useNavigate } from "react-router-dom";
 
 type ProductProps = {
     product : ProductDetail
 }
 
 const ProductCard = ({ product} : ProductProps) => {
-   const { onHandleWishList } = useWisthList();
-
+    const navigate =  useNavigate()
+    const { onHandleWishList } = useWisthList();
+    
     const rating = Math.ceil(product.rating / 2)
     let stars : any[] = [];
     
@@ -19,8 +20,12 @@ const ProductCard = ({ product} : ProductProps) => {
         stars.push(<img src={star.toString()} />)
     }
 
+    const onHandleDetail = (productId: number) => {
+        navigate(`/detail/${productId}`)
+    }
+
     return(
-        <div className="flex flex-col gap-x-1 w-full">
+        <div  className="flex flex-col gap-x-1 w-full">
             <div className="bg-[#F5F5F5] flex flex-col rounded-md p-2 gap-y-2 h-[230px]">
                 <div className="flex justify-between">
                     <div className="bg-[#DB4444] w-[60px] rounded-sm flex items-center justify-center ">
@@ -36,13 +41,15 @@ const ProductCard = ({ product} : ProductProps) => {
                         />
                     </div>
                 </div>
-                <div className="flex justify-between">
-                   <div className="flex-1 flex justify-center items-center">
-                        <img  src={`http://localhost:8888${product.images[0]}`} alt={product.description}/>
-                   </div>
-                    <div className="flex bg-white items-start justify-center rounded-2xl p-1 max-h-8 object-fill">
-                        <RemoveRedEyeOutlinedIcon   className="hover:cursor-pointer"/>
-                    </div>
+                <div 
+                    className="flex justify-center items-center hover:cursor-pointer"
+                    onClick={() => onHandleDetail(product.id)}
+                >
+                    <img  
+                        src={`http://localhost:8888${product.images[0]}`} 
+                        alt={product.description}
+                        className="object-cover rounded-md"
+                    />
                 </div>
 
             </div>

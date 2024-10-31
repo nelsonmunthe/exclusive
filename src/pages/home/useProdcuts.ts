@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { products } from "../../apiCall/auth";
+import { products } from "../../apiCall/product";
 import { Pagination } from "../../interfaces/common";
 import { ProductDetail } from "../../interfaces/product";
 

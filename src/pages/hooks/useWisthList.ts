@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { AddWishList, removeWishList } from "../../store/wishListReducer";
+import { AddWishList, removeWishList,  } from "../../store/wishListReducer";
 import { Product, ProductDetail } from "../../interfaces/product";
 
 const useWisthList = () => {

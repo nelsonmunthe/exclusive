@@ -1,9 +1,9 @@
-import { Button, Typography } from "@mui/material";
 import BarSign from "../../component/BarSign";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ProductCard from "../../component/productCard";
 import useFlashSale from "./useFlashSale";
+import CustomButton from "../../component/CustomButton";
 
 const FlashSale = () => {
     const { flashSales } = useFlashSale()
@@ -51,17 +51,16 @@ const FlashSale = () => {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                 {
                     flashSales.map((item, index) => {
-                        return <ProductCard  product={item} key={item.id}/>
+                        return <ProductCard  product={item} key={index}/>
                     })
                 }
                 
             </div>
-            <div className="flex justify-center items-center">
-                <button
-                    className="flex bg-[#DB4444] py-1 px-2 rounded-sm text-white"
-                >
-                    View All Products
-                </button>
+            <div className="flex justify-center items-center my-4">
+                <CustomButton 
+                    style="flex bg-[#DB4444] py-1 px-2 rounded-sm text-white text-sm"
+                    description="View All Products"
+                />
             </div>
         </div>
     )

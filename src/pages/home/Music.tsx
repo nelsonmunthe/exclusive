@@ -1,5 +1,5 @@
-import { Button, Typography } from "@mui/material";
 import MusicImage from "../../assets/images/music.png"
+import CustomButton from "../../component/CustomButton";
 
 const Music = () => {
 
@@ -27,11 +27,10 @@ const Music = () => {
                     </div>
                 </div>
                 <div>
-                    <button
-                        className="bg-[#00FF66] text-sm text-white py-1 px-2 rounded-md block"
-                    >
-                        Buy Now
-                    </button>
+                    <CustomButton 
+                        style="g-[#00FF66] text-sm text-white py-1 px-2 rounded-md block"
+                        description="Buy Now"
+                    />
                 </div>
             </div>
             <div className="flex-1">

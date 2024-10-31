@@ -1,6 +1,7 @@
-import { Button, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import Footer from "../component/Footer";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "../component/CustomButton";
 
 const ErrorPage = () => {
     const navigate = useNavigate()
@@ -16,12 +17,11 @@ const ErrorPage = () => {
                     404 Not Found
                 </Typography>
                 <Typography>Your visited page not found. You may go home page.</Typography>
-                <Button  
-                    sx={{bgcolor: "#DB4444", color : "white", textTransform: 'none'}}
-                    onClick={onHandleBack}
-                >
-                    Back to home page
-                </Button>
+                <CustomButton 
+                    style="bg-[#DB4444] text-white"
+                    description="Back to home page"
+                    onHandleClick={onHandleBack}
+                />
             </div>
             <Footer />
         </main>

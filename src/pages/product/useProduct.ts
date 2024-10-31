@@ -1,28 +1,16 @@
 import { useEffect, useState } from "react"
 import { Upload } from "../../interfaces/common"
-import { createProduct, getCategories, upload } from "../../apiCall/auth"
+import { createProduct, upload } from "../../apiCall/product"
 import { NewProduct } from "../../interfaces/product"
 import { useNavigate } from "react-router-dom"
 import { enqueueSnackbar } from "notistack"
 import { Category } from "../../interfaces/category"
+import { getCategories } from "../../apiCall/common"
 
 const useProduct = () => {
     const navigate = useNavigate()
     const [images, setImages] = useState<Upload[]>([])
     const [categories, setCategories] = useState<Category[]>([])
-
-    const [product, setProduct] = useState<NewProduct>({
-        name: "",
-        description: "",
-        category_id: 0,
-        rating: 0,
-        price: 0,
-        discount: 0,
-        total: 0,
-        flash_sell: false,
-        wishList: false,
-        images: ""
-    })
 
     const createCagetory = (id: number, name: string, description: string):Category =>{
         return {
@@ -63,12 +51,12 @@ const useProduct = () => {
             if(!file) return
 
             let formData = new FormData();
-
+            const { size, name} = file[0]
             const image : Upload = {
                 isUploading: true,
-                totalSize: file[0].size,
-                currentSize: file[0].size,
-                fileName: file[0].name,
+                totalSize: size,
+                currentSize: size,
+                fileName: name,
                 url: ""
             }
 
@@ -106,13 +94,24 @@ const useProduct = () => {
         }
     }
 
-    const onCreateProduct = async () => {
+    const onCreateProduct = async (event: React.FormEvent<HTMLFormElement>) => {
         try {
+            event.preventDefault()
+            const form = new FormData(event.currentTarget)
+
             const data:NewProduct = {
-                ...product,
+                name: form.get("name") as string,
+                description: form.get('description') as string,
+                category_id: Number(form.get('category_id') as string),
+                rating: Number(form.get('rating') as string),
+                price: Number(form.get('price') as string),
+                discount: Number(form.get('discount') as string),
+                total: Number(form.get('total') as string),
+                flash_sell: false,
+                wishList: false,
                 images : JSON.stringify(images.map(item => item.url))
             }
-            
+        
             const response = await createProduct(data);
             if(response) {
                 enqueueSnackbar("Create Product Suceeded", {variant: "success"})
@@ -124,27 +123,11 @@ const useProduct = () => {
         }
     }
 
-    const onChangeDataProduct = (
-            field: string, 
-            event : React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-            dataType: 'string' | 'number'
-    ) => {
-        
-        setProduct(prev => {
-            return{
-                ...prev,
-                [field]: dataType === 'number' ? Number(event.target.value) : event.target.value
-            }
-        })
-    }
-
     return {
         images,
         onRemoveImage,
         uploadImageProduct,
         onCreateProduct,
-        product,
-        onChangeDataProduct,
         categories
     }
 }

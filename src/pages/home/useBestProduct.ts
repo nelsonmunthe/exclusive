@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Product, ProductDetail } from "../../interfaces/product";
-import { getBestProducts } from "../../apiCall/auth";
+import { ProductDetail } from "../../interfaces/product";
+import { getBestProducts } from "../../apiCall/product";
 import { useTypedSelector } from "../../store/store";
 
 const useBestProduct = () => {
     const [bestProduct, setBestProduct] = useState<ProductDetail[]>([]);
-    const wishList = useTypedSelector(state => state.wishList.Products)
+    const wishList = useTypedSelector(state => state.wishList.products)
 
     useEffect(() => {
         const products : ProductDetail[] =  bestProduct.map((item: ProductDetail) => {
@@ -30,7 +30,8 @@ const useBestProduct = () => {
         try {
             const response = await getBestProducts();
             if(response) {
-                const product = response?.data?.data.map((item: Product) => {
+                const product = response?.data?.data.map((item: ProductDetail) => {
+                    item.images = JSON.parse(item.images)
                     const isWishList = wishList.find(wishListItem => wishListItem.id === item.id);
                     if(isWishList) {
                         return {
