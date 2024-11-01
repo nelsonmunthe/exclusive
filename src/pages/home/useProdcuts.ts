@@ -9,6 +9,8 @@ const useProduct = () => {
         paginate,
         isFirstPage, 
         isLastPage,
+        onHandleNextPage,
+        onHandlePrevPage,
         setPaginate
     } = usePagination()
 
@@ -75,33 +77,9 @@ const useProduct = () => {
             console.log(error)
         }
     }
-
-    const onHandleNextPage = async () => {
-        if(isLastPage) return
-        setPaginate(prev => {
-            return{
-                ...prev,
-                page : prev.page + 1
-            }
-        })
-        await getProducts({page: paginate.page + 1, perPage: paginate.perPage, total:paginate.total})
-    }
-
-    const onHandlePrevPage = async () => {
-        if(isFirstPage) return
-        setPaginate(prev => {
-            return{
-                ...prev,
-                page : prev.page - 1
-            }
-        })
-        await getProducts({page: paginate.page - 1, perPage: paginate.perPage, total:paginate.total})
-    }
-    
-
     useEffect(() => {
         getProducts(paginate)
-    }, [])
+    }, [paginate.page])
 
     return{
         product,

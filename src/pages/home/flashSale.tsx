@@ -3,7 +3,6 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ProductCard from "../../component/productCard";
 import useFlashSale from "./useFlashSale";
-import CustomButton from "../../component/CustomButton";
 
 const FlashSale = () => {
     const { flashSales } = useFlashSale()
@@ -55,12 +54,6 @@ const FlashSale = () => {
                     })
                 }
                 
-            </div>
-            <div className="flex justify-center items-center my-4">
-                <CustomButton 
-                    style="flex bg-[#DB4444] py-1 px-2 rounded-sm text-white text-sm"
-                    description="View All Products"
-                />
             </div>
         </div>
     )

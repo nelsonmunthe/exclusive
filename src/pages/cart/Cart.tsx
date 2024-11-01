@@ -37,12 +37,11 @@ const Cart = () => {
                     </div>
                 )
             })}
-            { products.length === 0 && (
-                <div className="flex justify-center items-center py-4">
-                    <p className="text-gray-500 font-semibold text-lg">You don't have Wish List product</p>
-                </div>
-            )
-
+                { products.length === 0 && (
+                    <div className="flex justify-center items-center py-4">
+                        <p className="text-gray-500 font-semibold text-lg">You don't have Wish List product</p>
+                    </div>
+                )
             }           
             <div className="flex justify-between ">
                 <CustomButton 

@@ -9,11 +9,33 @@ const usePagination = () => {
     isFirstPage = paginate.page === 1 ? true : false;
     isLastPage = paginate.page * paginate.perPage <= paginate.total ? false : true
 
+    const onHandlePrevPage = () => {
+        if(isFirstPage) return
+        setPaginate(prev => {
+            return{
+                ...prev,
+                page : prev.page - 1
+            }
+        })
+    }
+
+    const onHandleNextPage = () => {
+        if(isLastPage) return
+        setPaginate(prev => {
+            return{
+                ...prev,
+                page : prev.page + 1
+            }
+        })
+    }
+ 
     return{
         paginate,
         isFirstPage,
         isLastPage,
-        setPaginate
+        setPaginate,
+        onHandlePrevPage,
+        onHandleNextPage,
     }
 }
 
