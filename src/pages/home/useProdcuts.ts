@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { products } from "../../apiCall/product";
 import { Pagination } from "../../interfaces/common";
 import { ProductDetail } from "../../interfaces/product";
-
+import usePagination from "../../hooks/usePagination";
 
 const useProduct = () => {
-    const [paginate, setPaginate] = useState<Pagination>({page: 0, perPage: 10})
+    const{
+        paginate,
+        isFirstPage, 
+        isLastPage,
+        setPaginate
+    } = usePagination()
+
     const [product, setProduct] = useState<ProductDetail[]>([])
 
     const createProduct = (
@@ -36,12 +42,13 @@ const useProduct = () => {
         }
     }
 
-    const getProducts = async() => {
+    const getProducts = async(paginate: Pagination) => {
         try {
             const response = await products(paginate);
             if(response){
-                const products = response.data.data.map((item: ProductDetail) => {
-                    // const images : string[] = JSON.parse(item.images)
+               
+                const products = response.data.data.data.map((item: ProductDetail) => {
+                    const images : string[] = JSON.parse(item.images)
                     return createProduct(
                         item.id,
                         item.name,
@@ -53,19 +60,55 @@ const useProduct = () => {
                         item.total,
                         item.flash_sell,
                         item.wishList,
-                        item.images
+                        images
                     )
                 })
-
                 setProduct(products)
+                setPaginate(prev => {
+                    return{
+                        ...prev,
+                        total: response?.data?.data?.total
+                    }
+                })
             }
         } catch (error) {
-            
+            console.log(error)
         }
     }
 
+    const onHandleNextPage = async () => {
+        if(isLastPage) return
+        setPaginate(prev => {
+            return{
+                ...prev,
+                page : prev.page + 1
+            }
+        })
+        await getProducts({page: paginate.page + 1, perPage: paginate.perPage, total:paginate.total})
+    }
+
+    const onHandlePrevPage = async () => {
+        if(isFirstPage) return
+        setPaginate(prev => {
+            return{
+                ...prev,
+                page : prev.page - 1
+            }
+        })
+        await getProducts({page: paginate.page - 1, perPage: paginate.perPage, total:paginate.total})
+    }
+    
+
+    useEffect(() => {
+        getProducts(paginate)
+    }, [])
+
     return{
-        product
+        product,
+        isFirstPage,
+        isLastPage,
+        onHandleNextPage,
+        onHandlePrevPage
     }
 }
 

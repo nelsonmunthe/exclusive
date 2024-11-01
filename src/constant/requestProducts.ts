@@ -36,6 +36,6 @@ export const PRODUCT_DETAIL = (productId: number) : AxiosRequestConfig =>  (
 export const PRODUCTS = (paginate: Pagination) : AxiosRequestConfig => (
     {
         method: "get",
-        url: `product?page=${paginate.page}&perPage=${paginate.perPage}`
+        url: `product/all?page=${paginate.page}&perPage=${paginate.perPage}`
     }
 )

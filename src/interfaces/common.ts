@@ -16,6 +16,7 @@ export type UploadProps = {
 export type Pagination = {
     page : number
     perPage : number
+    total: number
 }
 
 export type CustomInputProps = {
