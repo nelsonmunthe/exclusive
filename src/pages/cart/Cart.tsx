@@ -5,7 +5,8 @@ const Cart = () => {
     const { 
         products,
         totalPrice,
-        onChangeNumberProduct
+        onChangeNumberProduct,
+        onSubmitPurcahse
      } = useCart();
     
     return(
@@ -65,7 +66,10 @@ const Cart = () => {
                         />
                     </div>
                 </div>
-                <form className="flex flex-col border border-gray-600 rounded-md px-2 py-3 gap-y-2">
+                <form 
+                    className="flex flex-col border border-gray-600 rounded-md px-2 py-3 gap-y-2"
+                    onSubmit={event => onSubmitPurcahse(event)}
+                >
                     <p className="text-md">Cart Total</p>
                     <div className="flex justify-between">
                         <p className="text-sm text-gray-600">Subtotal:</p>
