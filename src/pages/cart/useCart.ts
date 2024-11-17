@@ -8,7 +8,6 @@ import { useSnackbar } from 'notistack'
 import { purchase } from "../../interfaces/Purchase";
 import { ProductWishList } from "../../interfaces/product";
 
-
 const useCart = () => {
     const dispath = useDispatch()
     const  { products, total_price} =  useTypedSelector(state => state.wishList)
@@ -55,7 +54,10 @@ const useCart = () => {
             })
           
             const response =  await createPurchase(purchaseOrder, total_price);
-            console.log(response)
+            if(response) {
+                enqueueSnackbar("Order product succeeded", {variant: "success"})
+                navigate("/")
+            }
         } catch (error) {
             
         }
