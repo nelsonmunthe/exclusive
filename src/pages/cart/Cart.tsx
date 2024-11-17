@@ -4,7 +4,7 @@ import CustomButton from "../../component/CustomButton";
 const Cart = () => {
     const { 
         products,
-        totalPrice,
+        total_price,
         onChangeNumberProduct,
         onSubmitPurcahse
      } = useCart();
@@ -73,7 +73,7 @@ const Cart = () => {
                     <p className="text-md">Cart Total</p>
                     <div className="flex justify-between">
                         <p className="text-sm text-gray-600">Subtotal:</p>
-                        <p className="text-sm text-gray-600">${totalPrice}</p>
+                        <p className="text-sm text-gray-600">${total_price}</p>
                     </div>
                     <p className="border border-gray-200"></p>
                     <div className="flex justify-between">
@@ -83,7 +83,7 @@ const Cart = () => {
                     <p className="border border-gray-200"></p>
                     <div className="flex justify-between">
                         <p className="text-sm text-gray-600">Total:</p>
-                        <p className="text-sm text-gray-600">${totalPrice}</p>
+                        <p className="text-sm text-gray-600">${total_price}</p>
                     </div>
                     <div className="flex justify-center items-center">
                         <CustomButton 

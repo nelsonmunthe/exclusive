@@ -5,11 +5,13 @@ import { ChangeWishListProps } from "../../interfaces/common";
 import { createPurchase } from "../../apiCall/purchase";
 import { useNavigate } from "react-router-dom";
 import { useSnackbar } from 'notistack'
+import { purchase } from "../../interfaces/Purchase";
+import { ProductWishList } from "../../interfaces/product";
 
 
 const useCart = () => {
     const dispath = useDispatch()
-    const  { products, totalPrice} =  useTypedSelector(state => state.wishList)
+    const  { products, total_price} =  useTypedSelector(state => state.wishList)
     const navigate = useNavigate()
     const { enqueueSnackbar } = useSnackbar()
   
@@ -19,6 +21,22 @@ const useCart = () => {
             quantity: Number(event.target.value)
         }
         dispath(onChangeProductQuantity(payload))
+    }
+
+    const createPurchaseItem = (
+        product_id : number,
+        discount: number,
+        quantity: number,
+        total_price: number,
+        shipping: number,
+    ) : purchase => {
+        return {
+            product_id,
+            discount,
+            quantity,
+            total_price,
+            shipping,
+        }
     }
 
     const onSubmitPurcahse = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -32,7 +50,11 @@ const useCart = () => {
                 return
             }
 
-            const response =  await createPurchase(products, totalPrice);
+            const purchaseOrder : purchase[] = products.map((item: ProductWishList) => {
+                return createPurchaseItem(item.id, item.discount, item.quantity, item.totalPrice, 0)
+            })
+          
+            const response =  await createPurchase(purchaseOrder, total_price);
             console.log(response)
         } catch (error) {
             
@@ -42,7 +64,7 @@ const useCart = () => {
     
     return {
         products,
-        totalPrice,
+        total_price,
         onChangeNumberProduct,
         onSubmitPurcahse
     }

@@ -3,12 +3,12 @@ import { ProductWishList, ProductDetail } from "../interfaces/product"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 export interface IssueInitialState {
     products: ProductWishList[],
-    totalPrice: number
+    total_price: number
 }
 
 const initialState: IssueInitialState = {
     products: [],
-    totalPrice: 0
+    total_price: 0
 }
 
 export const wisthListSlice = createSlice({
@@ -22,13 +22,13 @@ export const wisthListSlice = createSlice({
                 totalPrice: 1 * action.payload.price
             }
             state.products = [...state.products, newProcut]
-            state.totalPrice = state.totalPrice + newProcut.totalPrice
+            state.total_price = state.total_price + newProcut.totalPrice
         },
         removeWishList: (state, action: PayloadAction<ProductDetail>) => {
             const wishList = [...state.products]
             const updateWishList = wishList.filter(item => {
                 if(item.id !== action.payload.id) {
-                    state.totalPrice = state.totalPrice - item.totalPrice
+                    state.total_price = state.total_price - item.totalPrice
                     return item
                 }
             })
@@ -39,7 +39,7 @@ export const wisthListSlice = createSlice({
             if(Number(action.payload.quantity) === 0) {
                 const updateWishList = wishList.filter((item: ProductWishList) => {
                     if(item.id === action.payload.productId) {
-                        state.totalPrice = state.totalPrice - item.totalPrice
+                        state.total_price = state.total_price - item.totalPrice
                     } else {
                         return item
                     }
@@ -53,7 +53,7 @@ export const wisthListSlice = createSlice({
                     if(action.payload.quantity > item.quantity) {
                         const newPrice:number = action.payload.quantity * item.price;
                         const oldPrice:number = item.quantity * item.price;
-                        state.totalPrice = state.totalPrice + (newPrice - oldPrice)
+                        state.total_price = state.total_price + (newPrice - oldPrice)
                         return {
                             ...item,
                             quantity : action.payload.quantity,
@@ -62,7 +62,7 @@ export const wisthListSlice = createSlice({
                     } else {
                         const newPrice:number = action.payload.quantity * item.price;
                         const oldPrice:number = item.quantity * item.price;
-                        state.totalPrice = state.totalPrice + (oldPrice - newPrice)
+                        state.total_price = state.total_price + (oldPrice - newPrice)
                         return {
                             ...item,
                             quantity : action.payload.quantity,
